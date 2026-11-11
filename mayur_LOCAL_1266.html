@@ -1,0 +1,30 @@
+import os
+import subprocess
+
+# Create project directory
+project = "my-local-repo"
+os.makedirs(project, exist_ok=True)
+
+# Move into project directory
+os.chdir(project)
+
+# Initialize local Git repository
+subprocess.run(["git", "init"])
+
+# Create a Python file
+with open("app.py", "w") as file:
+    file.write('print("Hello, Git Local Repository!")')
+
+# Check Git status
+subprocess.run(["git", "status"])
+
+# Add file to staging area
+subprocess.run(["git", "add", "app.py"])
+
+# Commit changes
+subprocess.run([
+    "git", "commit", "-m", "final commit"
+])
+
+# Display commit history
+subprocess.run(["git", "log", "--oneline"])
